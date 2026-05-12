@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#CC0000" />
+  <meta name="description" content="Pokédex Portfolio" />
+  <link rel="manifest" href="manifest.json" />
+  <title>Pokédex Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <canvas id="bg-canvas"></canvas>
+
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-ball"></span>
+        <h1>Pokédex <span>Portfolio</span></h1>
+      </div>
+      <button class="btn-add" id="btnOpenModal">+ Novo Card</button>
+    </div>
+  </header>
+
+  <section class="hero" id="parallaxHero">
+    <div class="hero-bg" id="parallaxBg"></div>
+    <div class="hero-content">
+      <p class="hero-sub">Seu portfólio de cards</p>
+      <h2 class="hero-title">Gotta Catch<br/><em>'Em All!</em></h2>
+      <p class="hero-count"><span id="cardCount">0</span> cards cadastrados</p>
+    </div>
+
+    <div class="pokeball-deco" aria-hidden="true">
+      <div class="pb-half top"></div>
+      <div class="pb-half bottom"></div>
+      <div class="pb-band"></div>
+      <div class="pb-center"></div>
+    </div>
+  </section>
+
+  <main class="main" id="cardsGrid">
+    <div class="empty-state" id="emptyState">
+      <div class="empty-ball"></div>
+      <p>Nenhum card ainda.<br/>Clique em <strong>Novo Card</strong> para começar!</p>
+    </div>
+  </main>
+
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="btnCloseModal">✕</button>
+      <h2 id="modalTitle">Novo Card</h2>
+
+      <div class="form-group">
+        <label for="inputName">Nome do Pokémon</label>
+        <input type="text" id="inputName" placeholder="Ex: Charizard" maxlength="40" />
+      </div>
+
+      <div class="form-group">
+        <label for="inputUrl">URL da Imagem</label>
+        <input type="url" id="inputUrl" placeholder="https://..." />
+        <div class="img-preview" id="imgPreview">
+          <img id="previewImg" src="" alt="Preview" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="inputAtk">Ataque</label>
+          <input type="number" id="inputAtk" placeholder="0" min="0" max="999" />
+        </div>
+        <div class="form-group">
+          <label for="inputDef">Defesa</label>
+          <input type="number" id="inputDef" placeholder="0" min="0" max="999" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputDesc">Descrição</label>
+        <textarea id="inputDesc" placeholder="Descreva este Pokémon..." rows="3" maxlength="200"></textarea>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-cancel" id="btnCancel">Cancelar</button>
+        <button class="btn-save" id="btnSave">Salvar Card</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="deleteOverlay">
+    <div class="modal modal-delete">
+      <h2>Remover Card?</h2>
+      <p>Esta ação não pode ser desfeita.</p>
+      <div class="modal-actions">
+        <button class="btn-cancel" id="btnCancelDelete">Cancelar</button>
+        <button class="btn-delete" id="btnConfirmDelete">Remover</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
